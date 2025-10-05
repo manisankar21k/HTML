@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Learning Portal</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial; background: #667eea; min-height: 100vh; color: #333; padding: 20px; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .header { text-align: center; color: white; margin-bottom: 2rem; padding: 1rem; }
+        .header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+        .section { background: white; margin: 1rem 0; border-radius: 10px; overflow: hidden; }
+        .section-title { background: #f8f9fa; padding: 1rem; color: #667eea; font-weight: bold; cursor: pointer; }
+        .section-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; padding: 1rem; }
+        #assignments-content, #html-topics-content { display: none; }
+        #assignments-toggle:checked ~ #assignments-content, #html-topics-toggle:checked ~ #html-topics-content { display: grid; }
+        input[type="checkbox"] { display: none; }
+        .nav-card { background: #f8f9fa; padding: 1rem; border-radius: 8px; text-decoration: none; color: #333; text-align: center; }
+        .nav-card:hover { background: #667eea; color: white; }
+        .footer { text-align: center; color: white; margin-top: 2rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>HTML Learning Portal</h1>
+            <p>Click sections to explore content</p>
+        </header>
+
+        <div class="section">
+            <input type="checkbox" id="assignments-toggle" checked>
+            <label for="assignments-toggle" class="section-title">📋 Assignments (1-3)</label>
+            <div class="section-content" id="assignments-content">
+                <a href="HTML/assignment/assignment1/assignment.html" class="nav-card">Assignment 1</a>
+                <a href="HTML/assignment/assignment2/assigment2.html" class="nav-card">Assignment 2</a>
+                <a href="HTML/assignment/assignment 3/htmlproject.html" class="nav-card">Assignment 3</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <input type="checkbox" id="html-topics-toggle">
+            <label for="html-topics-toggle" class="section-title">🌐 HTML Topics</label>
+            <div class="section-content" id="html-topics-content">
+                <a href="HTML/html intro/intro.html" class="nav-card">HTML Introduction</a>
+                <a href="HTML/inline and block level element/inline.html" class="nav-card">Inline Elements</a>
+                <a href="HTML/inline and block level element/blocklevel.html" class="nav-card">Block Level Elements</a>
+                <a href="HTML/form/form.html" class="nav-card">HTML Forms</a>
+                <a href="HTML/table/table.html" class="nav-card">HTML Tables</a>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>© 2025 HTML Learning Portal</p>
+        </footer>
+    </div>
+</body>
+</html>

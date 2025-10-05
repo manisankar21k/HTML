@@ -11,13 +11,18 @@
         .header { text-align: center; color: white; margin-bottom: 2rem; padding: 1rem; }
         .header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
         .section { background: white; margin: 1rem 0; border-radius: 10px; overflow: hidden; }
-        .section-title { background: #f8f9fa; padding: 1rem; color: #667eea; font-weight: bold; cursor: pointer; }
+        .section-title { background: #f8f9fa; padding: 1rem; color: #667eea; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .section-title::after { content: "▼"; font-size: 0.8rem; transition: transform 0.3s; }
+        input[type="checkbox"]:checked + .section-title::after { transform: rotate(180deg); }
         .section-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; padding: 1rem; }
-        #assignments-content, #html-topics-content { display: none; }
-        #assignments-toggle:checked ~ #assignments-content, #html-topics-toggle:checked ~ #html-topics-content { display: grid; }
+        #assignments-content, #css-assignments-content, #html-topics-content, #css-topics-content { display: none; }
+        #assignments-toggle:checked ~ #assignments-content, 
+        #css-assignments-toggle:checked ~ #css-assignments-content,
+        #html-topics-toggle:checked ~ #html-topics-content,
+        #css-topics-toggle:checked ~ #css-topics-content { display: grid; }
         input[type="checkbox"] { display: none; }
-        .nav-card { background: #f8f9fa; padding: 1rem; border-radius: 8px; text-decoration: none; color: #333; text-align: center; }
-        .nav-card:hover { background: #667eea; color: white; }
+        .nav-card { background: #f8f9fa; padding: 1rem; border-radius: 8px; text-decoration: none; color: #333; text-align: center; transition: all 0.3s ease; }
+        .nav-card:hover { background: #667eea; color: white; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
         .footer { text-align: center; color: white; margin-top: 2rem; }
     </style>
 </head>
@@ -28,9 +33,10 @@
             <p>Click sections to explore content</p>
         </header>
 
+        <!-- HTML Assignments Section -->
         <div class="section">
             <input type="checkbox" id="assignments-toggle" checked>
-            <label for="assignments-toggle" class="section-title">📋 Assignments (1-3)</label>
+            <label for="assignments-toggle" class="section-title">📋 HTML Assignments (1-3)</label>
             <div class="section-content" id="assignments-content">
                 <a href="HTML/assignment/assignment1/assignment.html" class="nav-card">Assignment 1</a>
                 <a href="HTML/assignment/assignment2/assigment2.html" class="nav-card">Assignment 2</a>
@@ -38,6 +44,20 @@
             </div>
         </div>
 
+        <!-- CSS Assignments Section -->
+        <div class="section">
+            <input type="checkbox" id="css-assignments-toggle">
+            <label for="css-assignments-toggle" class="section-title">🎨 CSS Assignments</label>
+            <div class="section-content" id="css-assignments-content">
+                <a href="CSS/assignment/4 box creating/boxmodel.html" class="nav-card">4box</a>
+                <a href="CSS/assignment/4 box , 4 pic/assignment.html" class="nav-card">4box 4 pic</a>
+                <a href="CSS/assignment/banner/banner.html" class="nav-card">banner</a>
+                <a href="CSS/assignment/dashboard/dashboard.html" class="nav-card">dashboard</a>
+                <a href="CSS/htmlcss/htmlcssbook.html" class="nav-card">htmlcss ebook</a>
+            </div>
+        </div>
+
+        <!-- HTML Topics Section -->
         <div class="section">
             <input type="checkbox" id="html-topics-toggle">
             <label for="html-topics-toggle" class="section-title">🌐 HTML Topics</label>
@@ -47,6 +67,22 @@
                 <a href="HTML/inline and block level element/blocklevel.html" class="nav-card">Block Level Elements</a>
                 <a href="HTML/form/form.html" class="nav-card">HTML Forms</a>
                 <a href="HTML/table/table.html" class="nav-card">HTML Tables</a>
+                <a href="HTML/semantic/semantic.html" class="nav-card">Semantic HTML</a>
+                <a href="HTML/media/media.html" class="nav-card">Media Elements</a>
+                <a href="HTML/accessibility/accessibility.html" class="nav-card">Accessibility</a>
+            </div>
+        </div>
+
+        <!-- CSS Topics Section -->
+        <div class="section">
+            <input type="checkbox" id="css-topics-toggle">
+            <label for="css-topics-toggle" class="section-title">🎨 CSS Topics</label>
+            <div class="section-content" id="css-topics-content">
+                <a href="CSS/flex/navbar.html" class="nav-card">Flexbox</a>
+                <a href="CSS/assignment/4 box creating/boxmodel.html" class="nav-card">Box Model</a>
+                <a href="CSS/background/background.html" class="nav-card">Background Properties</a>
+                <a href="CSS/grid/grid.html" class="nav-card">CSS Grid</a>
+               
             </div>
         </div>
 

@@ -15,9 +15,10 @@
         .section-title::after { content: "▼"; font-size: 0.8rem; transition: transform 0.3s; }
         input[type="checkbox"]:checked + .section-title::after { transform: rotate(180deg); }
         .section-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; padding: 1rem; }
-        #assignments-content, #css-assignments-content { display: none; }
+        #assignments-content, #css-assignments-content, #js-assignments-content { display: none; }
         #assignments-toggle:checked ~ #assignments-content, 
-        #css-assignments-toggle:checked ~ #css-assignments-content { display: grid; }
+        #css-assignments-toggle:checked ~ #css-assignments-content,
+        #js-assignments-toggle:checked ~ #js-assignments-content { display: grid; }
         input[type="checkbox"] { display: none; }
         .nav-card { background: #f8f9fa; padding: 1rem; border-radius: 8px; text-decoration: none; color: #333; text-align: center; transition: all 0.3s ease; }
         .nav-card:hover { background: #667eea; color: white; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
@@ -55,9 +56,20 @@
             </div>
         </div>
 
+        <div class="section">
+            <input type="checkbox" id="js-assignments-toggle">
+            <label for="js-assignments-toggle" class="section-title"> JavaScript Assignments</label>
+            <div class="section-content" id="js-assignments-content">
+                <a href="JavaScript/assignment/24times/24timesvar.html" class="nav-card">var declaration </a>
+                <a href="JavaScript/assignment/24times/24timeslet.html" class="nav-card">let declaration</a>
+                <a href="JavaScript/assignment/24times/numbers.html" class="nav-card">numbers initialiation</a>
+                <a href="JavaScript/assignment/24times/24timesconst.html" class="nav-card">initialization</a>
+            </div>
+        </div>
+
         <footer class="footer">
             <p>© 2025 HTML Learning Portal</p>
         </footer>
     </div>
 </body>
-</html> 
+</html>

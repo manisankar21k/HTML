@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planet Aurora Landing Page</title>
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #01012b, #240046);
+  color: #fff;
+  text-align: center;
+  overflow-x: hidden;
+}
+header {
+  padding: 60px 20px;
+  background: rgba(10, 0, 30, 0.5);
+  backdrop-filter: blur(5px);
+  animation: slideIn 1s ease;
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+h1 {
+  font-size: 2.5em;
+  letter-spacing: 2px;
+  background: linear-gradient(to right, #00ffcc, #8a2be2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+p {
+  font-size: 1.2em;
+  color: #ddd;
+}
+section {
+  padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+.info-box {
+  background: rgba(255, 255, 255, 0.1);
+  width: 80%;
+  max-width: 500px;
+  border-radius: 15px;
+  padding: 25px;
+  transition: transform 0.3s ease, background 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+}
+.info-box:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
+}
+.info-box h2 {
+  color: #00e6e6;
+  margin-bottom: 10px;
+}
+.join-btn {
+  background: linear-gradient(to right, #ff6f91, #ff9671);
+  border: none;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: all 0.3s ease;
+}
+.join-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 65, 108, 0.7);
+}
+footer {
+  margin-top: 40px;
+  padding: 20px;
+  font-size: 0.9em;
+  color: #bbb;
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Welcome to Planet Aurora</h1>
+  <p>Experience the dawn of a new cosmic civilization</p>
+</header>
+<section>
+  <div class="info-box">
+    <h2>Energy Currency</h2>
+    <p>Planet Aurora uses Energy coin (✨ E-Coin) — a radiant energy-based currency that glows with your vitality.</p>
+  </div>
+  <div class="info-box">
+    <h2>Transport</h2>
+    <p>Travel using AeroPods, HoverStreamers, or LightRails — silent, fast, and powered by solar flares.</p>
+  </div>
+  <div class="info-box">
+    <h2>Communication</h2>
+    <p>AuroSpeak: a universal fusion of light tones and rhythmic sound pulses used across galaxies.</p>
+  </div>
+  <button class="join-btn">Join Aurora Now</button>
+</section>
+<footer>
+  © 2125 future world
+</footer>
+</body>
+</html>

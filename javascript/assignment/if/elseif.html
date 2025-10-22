@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if-elseif-else</title>
+</head>
+<body>
+    <script>
+      var a = 2;
+      var b = 4;
+      var c = 6;
+      var d = a + b + c;
+
+      if (a < b) {
+        console.log("b is bigger than a");
+      }
+       else if (a > b) {
+        console.log("a is bigger than b");
+      } 
+      else {
+        console.log("a and b are same");
+      }
+
+      if (b < c) {
+        console.log("c is bigger than b");
+      } 
+      else if (b > c) {
+        console.log("b is bigger than c");
+      } 
+      else {
+        console.log("b and c are same");
+      }
+
+      if (b != c) {
+        console.log("b and c are not same");
+      }
+       else {
+        console.log("b and c are same");
+      }
+
+      if (a != b) {
+        console.log("a and b are not same");
+      }
+       else {
+        console.log("a and b are same");
+      }
+
+      if (a > c) {
+        console.log("a is bigger than c");
+      } 
+      else if (a < c) {
+        console.log("a is smaller than c");
+      } 
+      else {
+        console.log("a and c are same");
+      }
+
+      if (a < b && b < c) {
+        console.log("c is biggest among a, b, and c");
+      }
+       else if (a > b && b > c) {
+        console.log("a is biggest among a, b, and c");
+      } 
+      else if (a < c && c < b) {
+        console.log("b is biggest among a, b, and c");
+      } 
+      else {
+        console.log("numbers are not in order");
+      }
+
+      if (a + b == c) {
+        console.log("a plus b equals c");
+      } 
+      else if (a + c == b) {
+        console.log("a plus c equals b");
+      }
+       else if (b / c == a) {
+        console.log("b divided by c gives a");
+      }
+       else if (c - b == a) {
+        console.log("a is the gap between c and b");
+      }
+       else if (c + b == a) {
+        console.log("a equals the total of b and c");
+      } 
+      else {
+        console.log("no matching math condition found");
+      }
+    </script>
+</body>
+</html>

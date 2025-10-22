@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Methods</title>
+</head>
+<body>
+    <script>
+        let heroes = ["Ironman", "Spidey", "Cap", "Venom", "Falcon", "Wintey", "Natasa", "Hulk"];
+        console.log("Original:", heroes);
+
+        heroes.push("Loki");
+        console.log("After push:", heroes);
+
+        heroes.pop();
+        console.log("After pop:", heroes);
+
+        heroes.shift();
+        console.log("After shift:", heroes);
+
+        heroes.unshift("Ironman");
+        console.log("After unshift:", heroes);
+
+        let moreHeroes = ["Thanos", "Vision"];
+        let combined = heroes.concat(moreHeroes);
+        console.log("After concat:", combined);
+
+        console.log("Joined string:", combined.join(" - "));
+
+        console.log("Reversed:", combined.reverse());
+
+        console.log("Slice(1,4):", combined.slice(1, 4));
+
+        combined.splice(2, 1, "Wanda");
+        console.log("After splice:", combined);
+
+        console.log("Includes 'Hulk':", combined.includes("Hulk"));
+        console.log("Index of 'Wanda':", combined.indexOf("Wanda"));
+    </script>
+</body>
+</html>

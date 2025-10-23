@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>findfilterreduce</title>
+</head>
+<body>
+  <script>
+    const array1 = [2, 5, 8, 10];
+    console.log(array1.find((v) => v > 5));
+
+     const array2 = [1, 3, 7, 9];
+    console.log(array2.find((v) => v === 7));
+
+    const array3 = [4, 6, 12, 18];
+    console.log(array3.find((v) => v % 3 === 0));
+
+    const array4 = [10, 15, 20, 25];
+     console.log(array4.find((v) => v > 18));
+
+    const array5 = [3, 9, 27, 81];
+     console.log(array5.find((v) => v < 10));
+
+    const array6 = [2, 4, 6, 8];
+    console.log(array6.find((v) => v === 6));
+
+      const array7 = [5, 10, 15, 20];
+    console.log(array7.find((v) => v > 10));
+
+    const array8 = [1, 2, 3, 4];
+    console.log(array8.find((v) => v === 3));
+
+    const array9 = [11, 22, 33, 44];
+      console.log(array9.find((v) => v % 11 === 0));
+
+    const array10 = [7, 14, 21, 28];
+    console.log(array10.find((v) => v > 15));
+
+    const array11 = [9, 18, 27, 36];
+    console.log(array11.find((v) => v === 27));
+
+    const array12 = [12, 24, 48, 96];
+     console.log(array12.find((v) => v > 40));
+
+    
+    const arr1 = [2, 5, 8, 10];
+    console.log(array1.filter((v) => v > 5));
+
+     const arr2 = [1, 3, 7, 9];
+    console.log(arr2.filter((v) => v % 2 === 1));
+
+    const arr3 = [4, 6, 12, 18];
+    console.log(arr3.filter((v) => v % 3 === 0));
+
+    const arr4 = [10, 15, 20, 25];
+     console.log(arr4.filter((v) => v >= 15));
+
+    const arr5 = [3, 9, 27, 81];
+    console.log(arr5.filter((v) => v < 30));
+
+    const arr6 = [2, 4, 6, 8];
+     console.log(arr6.filter((v) => v % 4 === 0));
+
+    const arr7 = [5, 10, 15, 20];
+    console.log(arr7.filter((v) => v > 10));
+
+    const arr8 = [1, 2, 3, 4];
+    console.log(arr8.filter((v) => v <= 2));
+
+     const arr9 = [11, 22, 33, 44];
+    console.log(arr9.filter((v) => v % 11 === 0));
+
+    const arr10 = [7, 14, 21, 28];
+    console.log(arr10.filter((v) => v > 15));
+
+     const arr11 = [9, 18, 27, 36];
+    console.log(arr11.filter((v) => v !== 18));
+
+    const arr12 = [12, 24, 48, 96];
+    console.log(arr12.filter((v) => v > 20 && v < 80));
+
+        const ar1 = [2, 5, 8, 10];
+    console.log(ar1.reduce((a, b) => a + b));
+
+    const ar2 = [1, 3, 7, 9];
+    console.log(ar2.reduce((a, b) => a * b));
+
+     const ar3 = [4, 6, 12, 18];
+    console.log(ar3.reduce((a, b) => a + b, 10));
+
+       const ar4 = [10, 15, 20, 25];
+    console.log(ar4.reduce((a, b) => a - b));
+
+    const ar5 = [3, 9, 27, 81];
+     console.log(ar5.reduce((a, b) => a + b, 5));
+
+    const ar6 = [2, 4, 6, 8];
+    console.log(ar6.reduce((a, b) => a * b));
+
+    const ar7 = [5, 10, 15, 20];
+    console.log(ar7.reduce((a, b) => a + b));
+
+      const ar8 = [1, 2, 3, 4];
+    console.log(ar8.reduce((a, b) => a * b));
+
+    const ar9 = [11, 22, 33, 44];
+    console.log(ar9.reduce((a, b) => a + b));
+
+     const ar10 = [7, 14, 21, 28];
+    console.log(ar10.reduce((a, b) => a + b / 2));
+
+      const ar11 = [9, 18, 27, 36];
+    console.log(ar11.reduce((a, b) => a + b, 0));
+
+    const ar12 = [12, 24, 48, 96];
+    console.log(ar12.reduce((a, b) => a + b));
+  
+
+  </script>
+</body>
+</html>

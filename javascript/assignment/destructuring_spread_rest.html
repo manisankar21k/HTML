@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Destructuring and Spread Example</title>
+</head>
+<body>
+  <h2>Array Destructuring and Spread Operator Example</h2>
+  <script>
+    let names = ["vijay", "ajith", "surya", "kamal", "rajini", "captain america", "hulk", "ironman", "spiderman", "wanda", "blackpanther", "rat", "cat", "dog", "horse"];
+    let [a, b, c, d, e, f, g, h, i, j, k, l, m, n, o] = names;
+    document.write(a + "<br>");
+    document.write(b + "<br>");
+    document.write(c + "<br>");
+    document.write(d + "<br>");
+    document.write(e + "<br>");
+    document.write(f + "<br>");
+    document.write(g + "<br>");
+    document.write(h + "<br>");
+    document.write(i + "<br>");
+    document.write(j + "<br>");
+    document.write(k + "<br>");
+    document.write(l + "<br>");
+    document.write(m + "<br>");
+    document.write(n + "<br>");
+    document.write(o + "<br>");
+
+     let heroes1 = ["vijay", "ajith", "surya", "kamal", "rajini"];
+    let heroes2 = ["captain america", "hulk", "ironman", "spiderman", "wanda"];
+    let animals = ["blackpanther", "rat", "cat", "dog", "horse"];
+
+    let allNames = [...heroes1, ...heroes2, ...animals];
+
+    document.write("Combined Array: <br>" + "[" + allNames.join(", ") + "]");
+
+    function numbersList(...nums)
+    {
+      document.write("All Numbers: " + nums + "<br><br>");
+
+      let big = nums.find(x => x > 50);
+      document.write("Find (>50): " + big + "<br>");
+
+      let even = nums.filter(x => x % 2 == 0);
+      document.write("Filter (Even): " + even + "<br>");
+
+      let double = nums.map(x => x * 2);
+      document.write("Map (*2): " + double + "<br>");
+
+      let total = nums.reduce((sum, x) => sum + x, 0);
+      document.write("Reduce (Sum): " + total + "<br><br>");
+
+      document.write("ForEach Output:<br>");
+      nums.forEach(x => document.write(x + "<br>"));
+    }
+
+    numbersList(10, 20, 35, 45, 55, 65, 75, 85, 95, 100);
+  </script>
+</body>
+</html>
+
+

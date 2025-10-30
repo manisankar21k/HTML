@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tea kadai</title>
+</head>
+<body>
+  <script>
+    // var, let, const
+    var totalCups = 0;
+    let totalCost = 0;
+    const shopTitle = "Daily Tea Corner";
+    console.log("Welcome to", shopTitle);
+
+    // Arithmetic, Assignment
+    let tea = 3;
+    let coffee = 5;
+    let snacks = 7;
+    totalCups = 2 + 3 + 1;
+    totalCost += (tea * 2) + (coffee * 3) + (snacks * 1);
+    console.log("Total Cups Sold:", totalCups);
+    console.log("Total Cost:", totalCost);
+
+    // Comparison, Logical, If condition
+    let discount = false;
+    if (totalCost > 30 && totalCups > 4) {
+      discount = true;
+      totalCost -= 5;
+      console.log("Discount applied!");
+     }
+     else if (totalCost > 20 || totalCups > 2) {
+      console.log("Small offer given!");
+      totalCost -= 2;
+    } 
+    else {
+      console.log("No offer today.");
+    }
+
+    // Redeclare, Reassign
+    var totalCups = totalCups + 1;
+    totalCost = totalCost + 3;
+    console.log("Updated Cups:", totalCups);
+    console.log("Updated Cost:", totalCost);
+
+    // For loop
+    for (let i = 1; i <= totalCups; i++) {
+      console.log("Cup number:", i);
+    }
+
+    // While loop
+    let extra = 0;
+    while (extra < 3) {
+      totalCost += 1;
+      console.log("Added ₹1, total:", totalCost);
+      extra++;
+    }
+
+    // Array of Objects
+    const menu = [{ item: "Tea", price: 3, quantity: 2 },{ item: "Coffee", price: 5, quantity: 3 }, { item: "Snacks", price: 7, quantity: 1 } ];
+
+    // push, unshift
+    menu.push({ item: "Juice", price: 10, quantity: 1 });
+    menu.unshift({ item: "Water", price: 2, quantity: 5 });
+
+    // pop, shift
+    menu.pop();
+    menu.shift();
+
+    // map, join, reverse
+    const itemNames = menu.map(p => p.item);
+    console.log(itemNames.join(", "));
+    console.log(itemNames.reverse());
+
+    // slice, splice
+    console.log(menu.slice(0, 2));
+    menu.splice(1, 0, { item: "Biscuits", price: 4, quantity: 4 });
+
+    // filter, find, reduce
+    const lowPrice = menu.filter(p => p.price < 6);
+    const findItem = menu.find(p => p.item === "Coffee");
+    const totalBill = menu.reduce((sum, p) => sum + (p.price * p.quantity), 0);
+
+    // Function
+    function showBill(name, bill) {
+      console.log(name + ", your total bill is ₹" + bill);
+    }
+    showBill("Customer", totalBill);
+
+    // Arrow Function
+    const giveDiscount = (amount) => amount > 40 ? 5 : 2;
+    console.log("Discount:", giveDiscount(totalBill), "%");
+
+    // Anonymous Function
+    const thanksMsg = function() {
+      console.log("Thank you for visiting", shopTitle);
+    };
+    thanksMsg();
+  </script>
+</body>
+</html>

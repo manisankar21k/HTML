@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aurora Prime</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f1a2b, #1a2b3c);
+      color: #d8e6f5;
+      min-height: 100vh
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px
+    }
+
+    header {
+      padding: 15px 0;
+      background: rgba(26, 43, 60, 0.95);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #4ae0ff;
+      text-shadow: 0 0 20px #4ae0ff
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 30px
+    }
+
+    nav a {
+      color: #d8e6f5;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: all 0.3s ease
+    }
+
+    nav a:hover {
+      color: #4ae0ff;
+      background: rgba(74, 224, 255, 0.1);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(74, 224, 255, 0.3)
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 70% 50%, rgba(74, 224, 255, 0.1), transparent 50%)
+    }
+
+    .hero-content {
+      flex: 1;
+      position: relative;
+      z-index: 2
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      color: #4ae0ff;
+      margin-bottom: 20px;
+      text-shadow: 0 0 30px rgba(74, 224, 255, 0.5);
+      animation: glow 3s ease-in-out infinite alternate
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 20px rgba(74, 224, 255, 0.5)
+      }
+
+      to {
+        text-shadow: 0 0 30px rgba(74, 224, 255, 0.8), 0 0 40px rgba(74, 224, 255, 0.6)
+      }
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: #b8c8d8;
+      line-height: 1.6
+    }
+
+    .cta-button {
+      padding: 12px 35px;
+      background: linear-gradient(45deg, #4ae0ff, #00b3ff);
+      color: #0f1a2b;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(74, 224, 255, 0.4)
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(74, 224, 255, 0.6);
+      background: linear-gradient(45deg, #00b3ff, #4ae0ff)
+    }
+
+    .features {
+      padding: 100px 0;
+      background: rgba(21, 37, 54, 0.8)
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+      font-size: 2.5rem;
+      color: #4ae0ff;
+      position: relative
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, #4ae0ff, #00b3ff)
+    }
+
+    .features-grid {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap
+    }
+
+    .feature-card {
+      flex: 1;
+      min-width: 280px;
+      background: rgba(30, 48, 66, 0.6);
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(74, 224, 255, 0.1);
+      backdrop-filter: blur(10px)
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(74, 224, 255, 0.2);
+      border-color: rgba(74, 224, 255, 0.3)
+    }
+
+    .feature-icon {
+      font-size: 50px;
+      color: #4ae0ff;
+      margin-bottom: 20px;
+      transition: all 0.3s ease
+    }
+
+    .feature-card:hover .feature-icon {
+      transform: scale(1.2) rotate(5deg);
+      text-shadow: 0 0 20px rgba(74, 224, 255, 0.5)
+    }
+
+    .feature-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: #ffffff;
+      transition: all 0.3s ease
+    }
+
+    .feature-card:hover h3 {
+      color: #4ae0ff
+    }
+
+    .currency-section {
+      padding: 100px 0;
+      position: relative
+    }
+
+    .currency-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 30% 50%, rgba(255, 215, 0, 0.1), transparent 50%)
+    }
+
+    .currency-container {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2
+    }
+
+    .currency-info {
+      flex: 1;
+      min-width: 300px
+    }
+
+    .currency-info h3 {
+      font-size: 2rem;
+      color: #ffd700;
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.3)
+    }
+
+    .currency-display {
+      flex: 1;
+      min-width: 250px;
+      text-align: center
+    }
+
+    .currency-symbol {
+      font-size: 120px;
+      color: #ffd700;
+      margin-bottom: 20px;
+      text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+      animation: pulse 2s ease-in-out infinite alternate
+    }
+
+    @keyframes pulse {
+      from {
+        transform: scale(1)
+      }
+
+      to {
+        transform: scale(1.1)
+      }
+    }
+
+    .transport-section {
+      padding: 100px 0;
+      background: rgba(21, 37, 54, 0.8)
+    }
+
+    .transport-container {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      flex-wrap: wrap
+    }
+
+    .transport-info {
+      flex: 1;
+      min-width: 300px
+    }
+
+    .transport-info h3 {
+      font-size: 2rem;
+      color: #ff6b6b;
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px rgba(255, 107, 107, 0.3)
+    }
+
+    .transport-visual {
+      flex: 1;
+      min-width: 250px;
+      text-align: center
+    }
+
+    .flying-car {
+      font-size: 140px;
+      color: #ff6b6b;
+      margin-bottom: 20px;
+      animation: float 3s ease-in-out infinite;
+      text-shadow: 0 0 30px rgba(255, 107, 107, 0.4)
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px)
+      }
+
+      50% {
+        transform: translateY(-20px)
+      }
+    }
+
+    .language-section {
+      padding: 100px 0;
+      position: relative
+    }
+
+    .language-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 70% 50%, rgba(74, 224, 255, 0.1), transparent 50%)
+    }
+
+    .language-container {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2
+    }
+
+    .language-info {
+      flex: 1;
+      min-width: 300px
+    }
+
+    .language-info h3 {
+      font-size: 2rem;
+      color: #4ae0ff;
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px rgba(74, 224, 255, 0.3)
+    }
+
+    .language-visual {
+      flex: 1;
+      min-width: 250px;
+      text-align: center
+    }
+
+    .language-symbol {
+      font-size: 80px;
+      color: #4ae0ff;
+      margin-bottom: 20px;
+      font-family: monospace;
+      text-shadow: 0 0 20px rgba(74, 224, 255, 0.5);
+      animation: neon 2s ease-in-out infinite alternate
+    }
+
+    @keyframes neon {
+      from {
+        opacity: 0.7
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    footer {
+      background: rgba(15, 26, 43, 0.9);
+      padding: 50px 0;
+      margin-top: 50px;
+      border-top: 1px solid rgba(42, 59, 76, 0.5)
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 200px
+    }
+
+    .footer-column h3 {
+      color: #4ae0ff;
+      margin-bottom: 20px;
+      font-size: 1.3rem
+    }
+
+    .footer-column ul {
+      list-style: none
+    }
+
+    .footer-column li {
+      margin-bottom: 10px;
+      transition: all 0.3s ease
+    }
+
+    .footer-column li:hover {
+      transform: translateX(5px)
+    }
+
+    .footer-column a {
+      color: #b8c8d8;
+      text-decoration: none;
+      transition: all 0.3s ease
+    }
+
+    .footer-column a:hover {
+      color: #4ae0ff
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(42, 59, 76, 0.5);
+      color: #8a9aab
+    }
+
+    @media (max-width:768px) {
+      .hero h1 {
+        font-size: 2.5rem
+      }
+
+      .features-grid,
+      .currency-container,
+      .transport-container,
+      .language-container,
+      .footer-content {
+        flex-direction: column
+      }
+
+      .feature-card:hover {
+        transform: translateY(-5px) scale(1.01)
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container header-content">
+      <div class="logo">AURORA PRIME</div>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#currency">Currency</a></li>
+          <li><a href="#transport">Transport</a></li>
+          <li><a href="#language">Language</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Welcome to Aurora Prime</h1>
+        <p>Discover a world powered by cosmic energy with advanced technology and mind communication</p>
+        <a href="#features" class="cta-button">Begin Journey</a>
+      </div>
+    </div>
+  </section>
+  <section class="features" id="features">
+    <div class="container">
+      <h2 class="section-title">World Features</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🌿</div>
+          <h3>Eco Balance</h3>
+          <p>Self-sustaining ecosystems with perfect harmony</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏙️</div>
+          <h3>Smart Zones</h3>
+          <p>AI-managed urban centers adapting to needs</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤖</div>
+          <h3>AI Network</h3>
+          <p>Seamless artificial intelligence integration</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="currency-section" id="currency">
+    <div class="container">
+      <h2 class="section-title">Energy Currency</h2>
+      <div class="currency-container">
+        <div class="currency-info">
+          <h3>Quantum Energy Units</h3>
+          <p>Economy runs on measurable energy units</p>
+          <p>Stored in quantum crystals</p>
+          <p>Pure cosmic power transactions</p>
+        </div>
+        <div class="currency-display">
+          <div class="currency-symbol">⚡</div>
+          <div class="currency-name">Quantum Energy</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="transport-section" id="transport">
+    <div class="container">
+      <h2 class="section-title">Sky Travel</h2>
+      <div class="transport-container">
+        <div class="transport-info">
+          <h3>Celestial Flyers</h3>
+          <p>Anti-gravity vehicles</p>
+          <p>Powered by atmospheric energy</p>
+          <p>Zero emissions travel</p>
+        </div>
+        <div class="transport-visual">
+          <div class="flying-car">🚀</div>
+          <div class="transport-name">Sky Glider</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="language-section" id="language">
+    <div class="container">
+      <h2 class="section-title">Mind Language</h2>
+      <div class="language-container">
+        <div class="language-info">
+          <h3>Telepathy Communication</h3>
+          <p>Direct mind-to-mind connection</p>
+          <p>Neural interface devices</p>
+          <p>Instant thought transmission</p>
+          <p>Universal understanding</p>
+        </div>
+        <div class="language-visual">
+          <div class="language-symbol">🧠⚡</div>
+          <div class="language-name">MindLink</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Aurora Prime</h3>
+          <p>Where energy meets innovation in cosmic harmony</p>
+        </div>
+        <div class="footer-column">
+          <h3>Explore</h3>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#currency">Currency</a></li>
+            <li><a href="#transport">Transport</a></li>
+            <li><a href="#language">Language</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Contact</h3>
+          <ul>
+            <li>Manisanakr</li>
+            <li>Mob link: 9342761569</li>
+            <li>connect: manis2003@gmail.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">&copy; 2150 Aurora Prime Council</div>
+    </div>
+  </footer>
+</body>
+
+</html>

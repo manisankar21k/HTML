@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pic Search</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h2 {
+            color: #222;
+            font-size: 30px;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        input {
+            padding: 10px 15px;
+            font-size: 16px;
+            border: 2px solid #007bff;
+            border-radius: 6px;
+            outline: none;
+            width: 220px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #0056b3;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.6);
+        }
+
+        button {
+            margin-left: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        p {
+            font-size: 18px;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        img {
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Picture Search App</h2>
+    <input type="text" id="searchInput" placeholder="Enter name (eg, thor)">
+    <button id="searchBtn">Generate</button>
+    <p id="outputText"></p>
+    <img src="" id="outputImage" alt="" width="300">
+    <script>
+        const button = document.getElementById("searchBtn");
+        button.addEventListener('click', () => {
+            const userInput = document.getElementById("searchInput").value.toLowerCase();
+            const imageDisplay = document.getElementById("outputImage");
+            const outputMessage = document.getElementById("outputText");
+            outputMessage.textContent = `Your Search Result: ${userInput}`;
+            if (userInput === "cap") {
+                imageDisplay.src = "https://wallpapers.com/images/hd/captain-america-endgame-4k-3em6cnjough8ncu5.jpg";
+            } else if (userInput === "hulk") {
+                imageDisplay.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjdK8thj1GaPNirQF-xzrBFryq77sPA7nUiQ&s";
+            } else if (userInput === "spiderman") {
+                imageDisplay.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8A62AdUXWuH4E3QlSKyXswjadLqjNvxEaLw&s";
+            } else if (userInput === "vision") {
+                imageDisplay.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHuolOOSIRNKwzqDHqTsG65Lz12ADeWlNdiw&s";
+            } else if (userInput === "wanda") {
+                imageDisplay.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHuolOOSIRNKwzqDHqTsG65Lz12ADeWlNdiw&s";
+            } else if (userInput === "ionman") {
+                imageDisplay.src = "https://wallpapercat.com/w/full/6/9/f/319983-3840x2160-desktop-4k-iron-man-background.jpg";
+            } else if (userInput === "thor") {
+                imageDisplay.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR6fagJxWnAEeE8-VQU9S9SDw30ENSu8UIOw&s";
+            } else if (userInput === "blackpanther") {
+                imageDisplay.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1YR-2t6CmVYwBcugdieBD4R35sU-Brinxfg&s";
+            } else if (userInput === "blackadam") {
+                imageDisplay.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvwjNjR5038qW3gXSAvKU4sN1zmA0umcFNJMfp-dj3ucg5fntHNSZ6EkskaKZX_bcQZtU&usqp=CAU";
+            } else if (userInput === "batman") {
+                imageDisplay.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-qLUtgMXGMxp_yLyX5_eaSI9TeIkBrkCMTQ&s";
+            } else {
+                outputMessage.textContent = `Your Search Data: ${userInput} is not found`;
+                imageDisplay.src = "";
+            }
+        });
+    </script>
+</body>
+
+</html>

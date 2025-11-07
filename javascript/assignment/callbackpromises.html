@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CallbackPromises</title>
+</head>
+<body>
+    <script>
+
+    new Promise((a, b) => { console.log('X1') })
+    new Promise((a, b) => { console.log('X2') })
+    new Promise((a, b) => { console.log('X3') })
+    new Promise((a, b) => { console.log('X4') })
+    new Promise((a, b) => { console.log('X5') })
+    new Promise((a, b) => { console.log('X6') })
+    new Promise((a, b) => { console.log('X7') })
+    new Promise((a, b) => { console.log('X8') })
+    new Promise((a, b) => { console.log('X9') })
+    new Promise((a, b) => { console.log('X10') })
+
+    const alpha = () => { new Promise((a, b) => { console.log('Y1') }) }
+    alpha()
+
+    const beta = () => { new Promise((a, b) => { console.log('Y2') }) }
+    beta()
+
+    const gamma = () => { new Promise((a, b) => { console.log('Y3') }) }
+    gamma()
+
+    const delta = () => { new Promise((a, b) => { console.log('Y4') }) }
+    delta()
+
+    const omega = () => { new Promise((a, b) => { console.log('Y5') }) }
+    omega()
+
+    const sigma = () => { new Promise((a, b) => { console.log('Y6') }) }
+    sigma()
+
+    const theta = () => { new Promise((a, b) => { console.log('Y7') }) }
+    theta()
+
+    new Promise((a, b) => { console.log('Z') })
+
+
+    function taskStart() {
+        return new Promise((ok, no) => {
+            setTimeout(() => {
+                console.log("Idea Submitted to Head");
+                ok("Approval Received");
+            }, 1600);
+        });
+    }
+
+    function taskMeet() {
+        return new Promise((ok, no) => {
+            setTimeout(() => {
+                console.log("Discussion with Stakeholders");
+                ok("Final Requirements Locked");
+            }, 2100);
+        });
+    }
+
+    function taskBuild() {
+        return new Promise((ok, no) => {
+            setTimeout(() => {
+                console.log("Team Working on Modules");
+                ok("Coding Completed");
+            }, 2600);
+        });
+    }
+
+    function taskLaunch() {
+        return new Promise((ok, no) => {
+            setTimeout(() => {
+                console.log("Deployment Done");
+                ok("Everyone Appreciated the Work");
+            }, 3100);
+        });
+    }
+
+    taskStart()
+        .then(s1 => {
+            console.log("Stage 1:", s1);
+            return taskMeet();
+        })
+        .then(s2 => {
+            console.log("Stage 2:", s2);
+            return taskBuild();
+        })
+        .then(s3 => {
+            console.log("Stage 3:", s3);
+            return taskLaunch();
+        })
+        .then(s4 => {
+            console.log("Stage 4:", s4);
+            console.log("Final Success");
+        })
+        .catch(err => {
+            console.log("Stopped:", err);
+        })
+// //calling the functionname().then((//parameter) => {
+//     console.log(//parameter);
+//     console.log("print the statement")
+// })      
+//      .then() is a function to run one after another. run when the promises is fullfilled or resolved.
+
+// .then(()=>{})
+
+// .then(()=>{})
+
+// .then(()=>{})
+
+// .then(()=>{})
+
+// .then(()=>{})
+
+// .then(()=>{})
+
+// .then(()=>{})
+
+// .then(()=>{})
+
+// .then(()=>{})
+
+// .then(()=>{})
+
+// .then(()=>{})
+</script>
+
+</body>
+</html>

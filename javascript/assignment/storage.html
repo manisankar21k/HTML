@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Drainage Leak Report</title>
+</head>
+
+<body>
+    <centre>
+    <h2>Drainage Leak Report Form</h2>
+
+    <form id="reportForm">
+        <label>Your Name:</label><br>
+        <input type="text" id="name" required><br><br>
+
+        <label>Mobile Number:</label><br>
+        <input type="text" id="mobile" required><br><br>
+
+        <label>Date:</label><br>
+        <input type="date" id="date" required><br><br>
+
+        <label>Location:</label><br>
+        <input type="text" id="location" required><br><br>
+
+        <label>Description:</label><br>
+        <textarea id="description"></textarea><br><br>
+
+        <button type="submit">Save</button>
+    </form>
+
+    <h2>Saved Reports</h2>
+    <table border="1" id="dataTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Date</th>
+                <th>Location</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        let reports = JSON.parse(localStorage.getItem("reports")) || [];
+
+        function renderTable() {
+            const table = document.querySelector("#dataTable tbody");
+            table.innerHTML = "";
+
+            reports.forEach((r) => {
+                const row = `<tr>
+          <td>${r.name}</td>
+          <td>${r.mobile}</td>
+          <td>${r.date}</td>
+          <td>${r.location}</td>
+          <td>${r.description}</td>
+        </tr>`;
+                table.innerHTML += row;
+            });
+        }
+
+        document.getElementById("reportForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const obj = {
+                name: document.getElementById("name").value,
+                mobile: document.getElementById("mobile").value,
+                date: document.getElementById("date").value,
+                location: document.getElementById("location").value,
+                description: document.getElementById("description").value
+            };
+
+            reports.push(obj);
+            localStorage.setItem("reports", JSON.stringify(reports));
+
+            renderTable();
+            this.reset();
+        });
+
+        renderTable();
+    </script>
+    </centre>
+</body>
+
+</html>
+
+
+
+
+</script>

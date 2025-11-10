@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tea Shop</title>
+  <style>
+    body {
+      background-color: #fffaf0;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      background-color: #420fdc;
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 60%;
+      text-align: center;
+    }
+    center {
+      padding: 50px;
+    }
+    button {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+    button:hover {
+      background-color: #388e3c;
+      transform: scale(1.05);
+    }
+    #imgBox img {
+      margin-top: 20px;
+      width: 300px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    }
+    #payBox {
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <center>
+    <h1>Welcome to Manis Tea Shop</h1>
+    <button id="showBtn">Available Products</button>
+    <div id="products" style="display:none;">
+      <button id="greenBtn">Green Tea</button>
+      <button id="horlicksBtn">Horlicks</button>
+    </div>
+    <div id="payBox"></div>
+    <div id="imgBox"></div>
+  </center>
+
+  <script>
+    const showBtn = document.getElementById("showBtn");
+    const products = document.getElementById("products");
+    const payBox = document.getElementById("payBox");
+    const imgBox = document.getElementById("imgBox");
+    const greenBtn = document.getElementById("greenBtn");
+    const horlicksBtn = document.getElementById("horlicksBtn");
+
+    showBtn.addEventListener("click", () => {
+      products.style.display = "block";
+      payBox.innerHTML = "";
+      imgBox.innerHTML = "";
+    });
+
+    greenBtn.addEventListener("click", () => {
+      greenBtn.style.display = "none";
+      payBox.innerHTML = "<button id='payBtn'>Payment</button>";
+      const payBtn = document.getElementById("payBtn");
+      payBtn.addEventListener("click", () => {
+        payBtn.style.display = "none";
+        alert("Thanks for your order");
+        imgBox.innerHTML = "<img src='https://img.freepik.com/premium-photo/hot-chinese-green-tea-with-mint-with-splash-pouring-from-kettle-into-cup-steam-rises-dark-background-selective-focus_630207-4131.jpg?semt=ais_hybrid&w=740&q=80'>";
+      });
+    });
+
+    horlicksBtn.addEventListener("click", () => {
+      horlicksBtn.style.display = "none";
+      payBox.innerHTML = "<button id='payBtn'>Payment</button>";
+      const payBtn = document.getElementById("payBtn");
+      payBtn.addEventListener("click", () => {
+        payBtn.style.display = "none";
+        alert("Thanks for your order");
+        imgBox.innerHTML = "<img src='https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/b420ac78b3cc4bc68551a5ff1d8dcacd.jpg?dpr=3&format=auto'>";
+      });
+    });
+  </script>
+</body>
+</html>

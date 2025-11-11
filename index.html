@@ -74,13 +74,15 @@
 
         #assignments-content,
         #css-assignments-content,
-        #js-assignments-content {
+        #js-assignments-content,
+        #bootstrap-content {
             display: none;
         }
 
         #assignments-toggle:checked~#assignments-content,
         #css-assignments-toggle:checked~#css-assignments-content,
-        #js-assignments-toggle:checked~#js-assignments-content {
+        #js-assignments-toggle:checked~#js-assignments-content,
+        #bootstrap-toggle:checked~#bootstrap-content {
             display: grid;
         }
 
@@ -185,21 +187,15 @@
                 <a href="javascript/assignment/fetchdata.html" class="nav-card">fetchdata</a>
                 <a href="javascript/assignment/storage.html" class="nav-card">local storage</a>
             </div>
+        </div>
 
-            <div class="section">
-                <input type="checkbox" id="assignments-toggle" checked>
-                <label for="assignments-toggle" class="section-title"> Bootstrap</label>
-                <div class="section-content" id="assignments-content">
-                    <a href="bootstrap/assignment/grid_banner_card.html" class="nav-card">grid flex banner</a>
-                    <a href="bootstrap/bootstrap_project/bootstrap_project.html" class="nav-card">project</a>
-                </div>
+        <div class="section">
+            <input type="checkbox" id="bootstrap-toggle">
+            <label for="bootstrap-toggle" class="section-title"> Bootstrap</label>
+            <div class="section-content" id="bootstrap-content">
+                <a href="bootstrap/assignment/grid_banner_card.html" class="nav-card">grid flex banner</a>
+                <a href="bootstrap/bootstrap_project/bootstrap_project.html" class="nav-card">project</a>
             </div>
-
-
-
-
-
-
         </div>
 
         <footer class="footer">

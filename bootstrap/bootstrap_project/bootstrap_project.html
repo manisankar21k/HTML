@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Assessment</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="fas fa-briefcase me-2"></i>CareerPath
+            </a>
+            <button class="navbar-toggler" type="button" onclick="toggleMobileMenu()">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavigation">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Jobs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Resources</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="#" class="text-white text-decoration-none">
+                        <i class="fas fa-user-circle me-1"></i> Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="banner bg-dark text-white py-5">
+        <div class="container text-center py-5">
+            <h1 class="display-4 fw-bold mb-4">Career Path Finder</h1>
+            <p class="lead mb-4">Discover your ideal career based on your skills and interests</p>
+            <button class="btn btn-primary btn-lg px-4 py-2" onclick="showCareerForm()">
+                <i class="fas fa-clipboard-list me-2"></i>Begin Career Test
+            </button>
+        </div>
+    </section>
+
+    <div class="container my-5">
+        <div class="text-center py-4" id="loadingIndicator" style="display: none;">
+            <div class="spinner-border text-primary mb-3" style="width: 3rem; height: 3rem;"></div>
+            <h4>Processing your information...</h4>
+            <p class="text-muted">Searching for suitable career options</p>
+        </div>
+        
+        <div class="bg-white rounded shadow-sm p-4 my-4" id="careerResults" style="display: none;">
+            <h2 class="mb-4"><i class="fas fa-chart-line me-2"></i>Your Career Report</h2>
+            
+            <div class="bg-light rounded p-3 mb-4" id="personalInfoDisplay">
+            </div>
+            
+            <h3 class="mt-4 mb-3">Recommended Career Paths:</h3>
+            <div class="row" id="careerSuggestions">
+            </div>
+        </div>
+        
+        <div class="row mt-5">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 text-center border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-search fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">Career Discovery</h5>
+                        <p class="card-text text-muted">Find careers that match your unique abilities and preferences.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 text-center border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-road fa-3x text-success mb-3"></i>
+                        <h5 class="card-title">Path Guidance</h5>
+                        <p class="card-text text-muted">Get clear direction on your professional journey.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 text-center border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-graduation-cap fa-3x text-warning mb-3"></i>
+                        <h5 class="card-title">Learning Path</h5>
+                        <p class="card-text text-muted">Identify skills to develop for career advancement.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-2">&copy; 2023 CareerPath. All rights reserved.</p>
+            <div class="mt-2">
+                <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal" id="careerFormModal" tabindex="-1" style="display: none;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title"><i class="fas fa-clipboard-list me-2"></i>Career Assessment</h5>
+                    <button type="button" class="btn-close btn-close-white" onclick="hideCareerForm()"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="careerTestForm">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="userFullName" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="userFullName" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="userEmail" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="userEmail" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="userPhone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="userPhone" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="userEducation" class="form-label">Highest Education</label>
+                                <select class="form-select" id="userEducation" required>
+                                    <option value="">Select Education Level</option>
+                                    <option value="High School">High School</option>
+                                    <option value="Diploma">Diploma</option>
+                                    <option value="Bachelor's Degree">Bachelor's Degree</option>
+                                    <option value="Master's Degree">Master's Degree</option>
+                                    <option value="PhD">PhD</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="userCourses" class="form-label">Courses Completed</label>
+                            <textarea class="form-control" id="userCourses" rows="2" placeholder="List any courses you've completed (separated by commas)"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="userSkills" class="form-label">Skills and Technologies</label>
+                            <textarea class="form-control" id="userSkills" rows="3" placeholder="List your skills, tools, and technologies (separated by commas)" required></textarea>
+                            <div class="form-text">Example: JavaScript, React, Python, SQL, Photoshop, Project Management, etc.</div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="hideCareerForm()">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="processCareerTest()">
+                        <i class="fas fa-chart-line me-2"></i>Get Career Suggestions
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1050;
+        }
+        
+        .modal-dialog {
+            max-width: 800px;
+            width: 90%;
+            margin: 1.75rem auto;
+        }
+        
+        .career-option {
+            border: none;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            background: white;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            border-left: 5px solid #0d6efd;
+        }
+        
+        .career-option:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .match-score {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .career-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #0d6efd;
+        }
+        
+        .skill-badge {
+            display: inline-block;
+            background: #e9ecef;
+            color: #495057;
+            padding: 5px 12px;
+            border-radius: 15px;
+            margin: 3px;
+            font-size: 0.8rem;
+            border: 1px solid #dee2e6;
+        }
+        
+        .skill-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .career-field {
+            color: #0d6efd;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+    </style>
+
+    <script>
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('mainNavigation');
+            if (navMenu.style.display === 'block') {
+                navMenu.style.display = 'none';
+            } else {
+                navMenu.style.display = 'block';
+            }
+        }
+
+        function showCareerForm() {
+            document.getElementById('careerFormModal').style.display = 'flex';
+        }
+
+        function hideCareerForm() {
+            document.getElementById('careerFormModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modalWindow = document.getElementById('careerFormModal');
+            if (event.target === modalWindow) {
+                hideCareerForm();
+            }
+        }
+
+        function processCareerTest() {
+            const userName = document.getElementById('userFullName').value;
+            const userEmail = document.getElementById('userEmail').value;
+            const userPhone = document.getElementById('userPhone').value;
+            const userEducation = document.getElementById('userEducation').value;
+            const userCourses = document.getElementById('userCourses').value;
+            const userSkills = document.getElementById('userSkills').value;
+            
+            if (!userName || !userEmail || !userPhone || !userEducation || !userSkills) {
+                alert('Please complete all required fields');
+                return;
+            }
+            
+            document.getElementById('loadingIndicator').style.display = 'block';
+            document.getElementById('careerResults').style.display = 'none';
+            
+            setTimeout(function() {
+                const userProfile = {
+                    userName,
+                    userEmail,
+                    userPhone,
+                    userEducation,
+                    userCourses,
+                    userSkills,
+                    testDate: new Date().toLocaleDateString()
+                };
+                
+                localStorage.setItem('userCareerProfile', JSON.stringify(userProfile));
+                
+                const careerMatches = findCareerMatches(userSkills, userEducation, userCourses);
+                
+                showCareerResults(userProfile, careerMatches);
+                
+                document.getElementById('loadingIndicator').style.display = 'none';
+                
+                hideCareerForm();
+            }, 2000);
+        }
+        
+        function findCareerMatches(userSkills, userEducation, userCourses) {
+            const skillsList = userSkills.split(',').map(skill => skill.trim().toLowerCase());
+            
+            const careerOptions = [
+                {
+                    jobTitle: "Frontend Developer",
+                    requiredSkills: ["javascript", "html", "css", "react", "angular", "vue", "typescript"],
+                    matchPercentage: 0,
+                    jobIcon: "fas fa-code",
+                    jobCategory: "Development"
+                },
+                {
+                    jobTitle: "Backend Developer",
+                    requiredSkills: ["python", "java", "node.js", "php", "ruby", "sql", "mongodb"],
+                    matchPercentage: 0,
+                    jobIcon: "fas fa-server",
+                    jobCategory: "Development"
+                },
+                {
+                    jobTitle: "Full Stack Developer",
+                    requiredSkills: ["javascript", "html", "css", "react", "node.js", "python", "sql"],
+                    matchPercentage: 0,
+                    jobIcon: "fas fa-layer-group",
+                    jobCategory: "Development"
+                },
+                {
+                    jobTitle: "Data Scientist",
+                    requiredSkills: ["python", "r", "sql", "machine learning", "statistics", "pandas", "numpy"],
+                    matchPercentage: 0,
+                    jobIcon: "fas fa-chart-line",
+                    jobCategory: "Data Science"
+                },
+                {
+                    jobTitle: "DevOps Engineer",
+                    requiredSkills: ["docker", "kubernetes", "aws", "jenkins", "linux", "python", "bash"],
+                    matchPercentage: 0,
+                    jobIcon: "fas fa-cogs",
+                    jobCategory: "Infrastructure"
+                },
+                {
+                    jobTitle: "UI/UX Designer",
+                    requiredSkills: ["figma", "adobe xd", "sketch", "photoshop", "illustrator", "wireframing", "prototyping"],
+                    matchPercentage: 0,
+                    jobIcon: "fas fa-palette",
+                    jobCategory: "Design"
+                },
+                {
+                    jobTitle: "Mobile App Developer",
+                    requiredSkills: ["swift", "kotlin", "react native", "flutter", "java", "ios", "android"],
+                    matchPercentage: 0,
+                    jobIcon: "fas fa-mobile-alt",
+                    jobCategory: "Development"
+                },
+                {
+                    jobTitle: "Data Analyst",
+                    requiredSkills: ["sql", "excel", "python", "tableau", "power bi", "statistics", "data visualization"],
+                    matchPercentage: 0,
+                    jobIcon: "fas fa-chart-bar",
+                    jobCategory: "Data Science"
+                },
+                {
+                    jobTitle: "Software Engineer",
+                    requiredSkills: ["java", "python", "c++", "algorithms", "data structures", "software design", "debugging"],
+                    matchPercentage: 0,
+                    jobIcon: "fas fa-laptop-code",
+                    jobCategory: "Development"
+                },
+                {
+                    jobTitle: "Cloud Architect",
+                    requiredSkills: ["aws", "azure", "google cloud", "docker", "kubernetes", "networking", "security"],
+                    matchPercentage: 0,
+                    jobIcon: "fas fa-cloud",
+                    jobCategory: "Infrastructure"
+                },
+                {
+                    jobTitle: "Cyber Security Analyst",
+                    requiredSkills: ["network security", "encryption", "firewalls", "penetration testing", "linux", "python"],
+                    matchPercentage: 0,
+                    jobIcon: "fas fa-shield-alt",
+                    jobCategory: "Security"
+                },
+                {
+                    jobTitle: "Product Manager",
+                    requiredSkills: ["product strategy", "market research", "user stories", "agile", "leadership", "communication"],
+                    matchPercentage: 0,
+                    jobIcon: "fas fa-tasks",
+                    jobCategory: "Management"
+                }
+            ];
+            
+            careerOptions.forEach(career => {
+                let skillsMatchCount = 0;
+                skillsList.forEach(skill => {
+                    if (career.requiredSkills.includes(skill)) {
+                        skillsMatchCount++;
+                    }
+                });
+                
+                career.matchPercentage = Math.round((skillsMatchCount / career.requiredSkills.length) * 100);
+                career.matchPercentage = Math.min(career.matchPercentage, 100);
+            });
+            
+            careerOptions.sort((a, b) => b.matchPercentage - a.matchPercentage);
+            
+            return careerOptions.slice(0, 8);
+        }
+        
+        function showCareerResults(userProfile, careerMatches) {
+            document.getElementById('careerResults').style.display = 'block';
+            
+            const skillsArray = userProfile.userSkills.split(',').map(skill => skill.trim());
+            
+            const profileDisplay = `
+                <h4><i class="fas fa-user me-2"></i>Your Information:</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Name:</strong> ${userProfile.userName}</p>
+                        <p><strong>Email:</strong> ${userProfile.userEmail}</p>
+                        <p><strong>Phone:</strong> ${userProfile.userPhone}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Education:</strong> ${userProfile.userEducation}</p>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <p><strong>Your Skills:</strong></p>
+                    <div>
+                        ${skillsArray.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                    </div>
+                </div>
+                ${userProfile.userCourses ? `<p class="mt-3"><strong>Courses:</strong> ${userProfile.userCourses}</p>` : ''}
+            `;
+            
+            document.getElementById('personalInfoDisplay').innerHTML = profileDisplay;
+            
+            let careersHTML = '';
+            if (careerMatches.length > 0) {
+                careerMatches.forEach(career => {
+                    careersHTML += `
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="career-option position-relative">
+                                <span class="match-score">${career.matchPercentage}% Match</span>
+                                <div class="career-icon">
+                                    <i class="${career.jobIcon}"></i>
+                                </div>
+                                <span class="career-field">${career.jobCategory}</span>
+                                <h5>${career.jobTitle}</h5>
+                                <div class="skills-section">
+                                    ${career.requiredSkills.slice(0, 4).map(skill => 
+                                        `<span class="skill-badge">${skill}</span>`
+                                    ).join('')}
+                                    ${career.requiredSkills.length > 4 ? `<span class="skill-badge">+${career.requiredSkills.length - 4} more</span>` : ''}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            } else {
+                careersHTML = '<div class="col-12"><p class="text-center">No career matches found. Consider expanding your skill set.</p></div>';
+            }
+            
+            document.getElementById('careerSuggestions').innerHTML = careersHTML;
+            
+            document.getElementById('careerResults').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedProfile = localStorage.getItem('userCareerProfile');
+            if (savedProfile) {
+                const userProfile = JSON.parse(savedProfile);
+                const careerMatches = findCareerMatches(userProfile.userSkills, userProfile.userEducation, userProfile.userCourses);
+                showCareerResults(userProfile, careerMatches);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+1. What is React?
+
+React is a JavaScript library for building user interfaces. It allows you to create reusable UI components and efficiently update the UI when data changes.
+
+2. Why React?
+
+Component-based → Reuse UI blocks
+
+Virtual DOM → Faster performance
+
+One-way data flow → Easy debugging
+
+Large community & ecosystem
+
+Easy to integrate with other libraries
+
+3. What is JSX?
+
+JSX (JavaScript XML) is a syntax extension that allows writing HTML-like code inside JavaScript.
+Example:
+
+const element = <h1>Hello, React!</h1>;
+
+
+JSX is later converted into JavaScript by Babel.
+
+4. What are side effects in React?
+
+A side effect is any operation that affects something outside the component’s scope.
+Examples:
+
+Fetching data from an API
+
+Manipulating the DOM directly
+
+Setting up a timer
+
+We handle side effects using the useEffect() hook in React.
+
+5. What is the Virtual DOM?
+
+The Virtual DOM is a lightweight copy of the real DOM.
+React uses it to detect what parts of the UI changed, and only updates those parts in the real DOM — improving performance.
+
+6. What is Babel?
+
+Babel is a JavaScript compiler that converts modern JS (ES6+, JSX) into browser-compatible JavaScript.
+Example: Converts JSX → React.createElement().
+
+7. What is the V8 Engine?
+
+V8 is Google’s JavaScript engine (used in Chrome and Node.js) that compiles JavaScript directly into machine code, making it run very fast.
+
+8. What is CRA (Create React App)?
+
+CRA is an official React project setup tool that automatically configures:
+
+Webpack
+
+Babel
+
+Development server
+
+File structure
+
+Command:
+
+npx create-react-app myapp
+
+9. What is Vite?
+
+Vite is a modern build tool and dev server that is faster than CRA because it uses ES modules and lazy loading.
+It’s lightweight and commonly used for React, Vue, etc.
+
+Command:
+
+npm create vite@latest myapp
+
+10. Difference: CRA vs Vite
+Feature	Create React App	Vite
+Speed	Slower (Webpack)	Much faster (ESBuild)
+Build Tool	Webpack	ESBuild/Rollup
+Default Config	Heavy	Lightweight
+Hot Reload	Slower	Instant
+Usage	Beginner-friendly	Modern alternative
+11. HTML vs React Webpage
+Aspect	HTML Page	React Page
+Structure	Static	Dynamic (JS Components)
+Rendering	Browser renders HTML	React uses Virtual DOM
+Reusability	Less	High (components)
+Interactivity	Manual JS	Built-in with state/hooks
+Maintenance	Difficult	Easy due to modular design
+12. React vs Angular
+Feature	React	Angular
+Type	Library	Framework
+Language	JavaScript (JSX)	TypeScript
+DOM	Virtual DOM	Real DOM
+Data Binding	One-way	Two-way
+Learning Curve	Easy	Complex
+Speed	Faster	Slightly slower
+Developed By	Facebook	Google
+13. Library vs Framework
+Feature	Library	Framework
+Control	You call the library	Framework calls your code
+Example	React, jQuery	Angular, Django
+Flexibility	High	Low (fixed structure)
+Size	Small	Large
+Use	Add specific features	Full application structure
+14. What are components in React?
+
+Components are independent, reusable pieces of UI.
+Types:
+
+Functional Components (use functions + hooks)
+
+Class Components (older, use lifecycle methods)
+
+15. What is useState Hook?
+
+useState allows React components to have state (data that changes over time).
+Example:
+
+const [count, setCount] = useState(0);
+
+16. What is useEffect Hook?
+
+useEffect handles side effects like data fetching, API calls, and timers.
+Example:
+
+useEffect(() => {
+  console.log("Component Mounted");
+}, []);
+
+17. What is a Single Page Application (SPA)?
+
+An SPA loads one HTML page and dynamically updates the content using JavaScript — without reloading the page.
+React apps are SPAs.
+
+18. How does React Router work?
+
+React Router helps in navigating between components without reloading the page.
+Example:
+
+<Route path="/about" element={<About />} />
+
+19. What is a key in React lists?
+
+Keys help React identify which list items changed or moved.
+Example:
+
+{items.map(item => <li key={item.id}>{item.name}</li>)}
+
+20. What are props in React?
+
+Props are inputs to a component — they make components reusable.
+Example:
+
+function Welcome(props) {
+  return <h1>Hello {props.name}</h1>;
+}

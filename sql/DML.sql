@@ -1,0 +1,10 @@
+INSERT INTO Employees (id, name, dept, salary, city) VALUES (8, 'Anita', 'IT', 60000, 'Chennai');
+INSERT INTO Employees (id, name, dept, salary, city) VALUES (9, 'Rahul', 'Finance', 48000, 'Bangalore');
+INSERT INTO Employees (id, name, dept, salary, city) VALUES (10, 'Sneha', 'HR', 53000, 'Hyderabad');
+UPDATE Employees SET salary = 75000 WHERE id = 3;
+UPDATE Employees SET city = 'Mumbai' WHERE id = 5;
+DELETE FROM Employees WHERE id = 6;
+INSERT INTO Employees (id, name, dept, salary, city) VALUES (11, 'Vikas', 'IT', 67000, 'Chennai');
+UPDATE Employees SET dept = 'Finance' WHERE id = 4;
+DELETE FROM Employees WHERE id = 2;
+SELECT * FROM Employees;
